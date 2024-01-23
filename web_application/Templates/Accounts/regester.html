@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+ {%load static%} 
+ {% block content %}
+ {% load crispy_forms_tags %}
+ {% block title%}
+
+<head>
+
+<title >Telone |Create Account Your Account</title>
+</head>
+
+<!-- NB: THIS LOGIN IS BY USERNAME  and the username should be eg name@company -->
+{%endblock title%}
+<body>
+  <br> <br>
+    <section class=" container-fluid d-flex align-items-center justify-content-center">
+        
+        <form id='form-id' class="shadow-lg mt-5 mb-5"  method = 'POST'
+        style="width:400px"  >
+          {% csrf_token %}
+          <div class="mb-3  form"> 
+            <div class="error-class">
+              <br>
+              <h4 class="login mx-sm-5  text-center ">Welcome To Tel<span class="text-primary fs-2 h2">O</span>ne</h4>
+              <h6 class="login mx-sm-5 text-info   text-center ">Network Managemnt System <span class="text-warning">NMS</span> </h3>
+            {% for message in messages %}
+              {% if message.tags == 'warning'%}
+                <div class="  mx-sm-3 ">
+                  <p class="text-danger text-center">{{message}}</p>
+                </div>
+              {%endif%} 
+              {%endfor%}
+              {% if form.errors %}
+              {% for field in form %}
+                      {% for error in field.errors %}
+                          <div class="alert alert-danger">
+                            {% for message in messages %}
+                              {% if message.tags == 'warning'%}
+                            <p class="">{{message}}</p>
+                              <strong>{{ field.label }}: {{ error|escape }}</strong>
+                          </div>
+                          {%endif%} 
+                        {%endfor%}
+                      {% endfor %}
+                  {% endfor %}
+                  {% for error in form.non_field_errors %}
+                      <div class="alert alert-danger">
+                          <strong>{{ error|escape }}</strong>
+                      </div>
+                  {% endfor %}
+              {% endif %}
+            </div>
+            <br>
+         
+            <div class=" text-start mx-sm-5">
+                <h5 class="text-center"> Create Account </h3>
+                 <p class="lead mt-3">
+                  <strong>{{CompanyForm.first_name|as_crispy_field}}</strong> 
+                </p>
+                 <p class="lead mt-3">
+                  <strong>{{CompanyForm.email|as_crispy_field}}</strong>  
+                </p>
+                
+                 <p class="lead mt-3">
+                  <strong>{{CompanyForm.password1|as_crispy_field}}</strong> 
+                </p>
+                <p class="lead mt-3">
+                    <strong>{{CompanyForm.password2|as_crispy_field}}</strong> 
+                  </p>
+                <br />
+              </div>
+          <div class="text-center">
+            <button type="submit" class="btn mb-4 w-50 btn-info button">
+              Create Account
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+ 
+
+{% endblock content %}

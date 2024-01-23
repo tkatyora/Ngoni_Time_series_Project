@@ -1,0 +1,56 @@
+{% extends 'other.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+<head>
+  <meta name="Key Words" content="NMS Web Application" />
+  <meta
+    name="description"
+    content=""
+  />
+{% block title%}
+    <title>Telone |Recomandations</title>
+{%endblock title%}
+</head>
+
+<body class="">
+  <main class="mt-5 mx-5 fs-5" >
+    <div class=" text-center">
+      <h5  class=""> Recomandations of the Network</h5>   
+      <hr>
+      <br>
+    </div>                                   
+    <div class="  row g-5"> 
+                                    {% for data  in recomand %}
+                                    
+                                    {%if data.Service == 'customer' %}
+                                    {%if data.user.username == user.username or user.is_staff %} 
+                                   
+      <div class="col-4">
+        <div class="p-4 border shadow bg-light">                                    
+          <p class=" text-start"> <strong class="text-success">Customer Name</strong> 
+            : {{data.user.first_name.title}} 
+          </p>
+                                        <h4>Recomandation</h4>
+          <p >{{data.body}} <br>
+            <span class="text-secondary">@{{data.created}} </span></p>
+        </div> 
+      </div>   
+      
+           
+                                      {%endif%}
+                                       {%endif%}
+                                        {%endfor%}
+          
+             <div>
+              <button class="text-center mb-5 btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
+              <br/> 
+             </div> 
+            </div>
+  
+  
+  </main>
+
+
+</body>
+{%endblock content%}

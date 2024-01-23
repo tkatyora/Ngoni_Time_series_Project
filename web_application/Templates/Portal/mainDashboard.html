@@ -1,0 +1,52 @@
+{% extends 'dashboard.html' %}
+ {% block content%} 
+ {% load static%}
+   {% block title%}
+<head>
+  <meta name="Key Words" content="Nitacagra Softwars Admin Dashboard">
+  <meta name="description" content="This is a platform for NitacagraSoftwares Admins , markerting team, and Accounts team to add and chage something om the website">
+<title>Telone |NMS Dashboard</title>
+</head>
+{%endblock title%}
+
+<body>
+<main class="col-md-9 col-lg-10 align-content-center bg-info px-md-4"
+     style="width: 75%">             
+    <section class="text-start my-2  mx-sm-5">
+      <br>
+       
+    <div class="mt-5 ">
+      {% for message in messages %}
+              {% if message.tags == 'success'%}
+                <div class="  mx-sm-3 ">
+                  <p class="bg-success text-center">{{message}}</p>
+                </div>
+              {%endif%} 
+              {%endfor%}
+              <br>
+              <br><br><br> <br>
+              <div class="text-center">
+                <h3 class=" fw-bold h3 fs-3">Good Day
+                   <span class="text-warning">{{user.first_name.title}}  {{user.last_name.title}}
+                   </span>
+                </h3>
+               <br>
+                <br>
+                 
+               <h3 class="text">Welcome  to Telone <BR></BR>
+                 <span class=""> Network Management System(NMS)</span>
+                </h3> 
+               
+              </div>
+    
+    </div>    
+</section> 
+
+</main>
+  
+  
+
+  <script src="{% static '../static/JS/view.js'%}"></script>
+</body>
+
+  {% endblock content%}

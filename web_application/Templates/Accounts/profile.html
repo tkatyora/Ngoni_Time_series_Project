@@ -1,0 +1,72 @@
+{% extends 'dashboard.html' %}
+ {% block content%} 
+ {% load static%}
+   {% block title%}
+<head>
+  <meta name="Key Words" content="Dashboard">
+  <meta name="description" content="Dashboard  to add and chage something om the profile">
+<title> |Profile</title>
+</head>
+{%endblock title%}
+<body>
+  <main class="col-md-9 col-lg-10 align-content-center px-md-4"
+      style="width: 75%">
+      <section class="text-start my-2 mx-sm-5">
+            <span class="text-center ">
+                <h1>My Profile</h1>
+            </span>
+            <h4 class="lead heading text-danger">NB: Please Update Your Prolile  </h4>
+           {% for profile in profiles%}
+          {% if profile.user.username == user.username%}
+            <h2 class="lead mt-3 text-warning">Welcome <strong>
+              {{user.first_name.title}} 
+            
+          {% if profile.Service == 'customer'%}
+          </strong> Below is Company and Network  Information</h2>
+          {%else%}
+           <h2> <strong>Below is Company   Information</strong></h2>
+           {%endif%} 
+                <div class="row container align-content-between ms-5  p-4 g-5">
+                  <div class="col-8 shadow ms-5">
+                    <h2 class="h4 mt-3 ">Compnay Information</h2>
+                    <hr>
+                    <p>{{data}}</p>
+                    <p class="lead">Company Name: {{profile.user.first_name.title}} </p>
+                    <p class="lead">UserName: {{profile.user.username.title}} </p>
+                    <p class="lead">Service Type: {{profile.Service}} </p>
+                      <p class="lead">Email : {{profile.user.email}}</p>
+                      <p class="lead">Addrees  : {{profile.address}}</p>
+                      <p class="lead">City : {{profile.city}}</p>
+                      <p class="lead">PhoneNumber : {{profile.phoneNumber}}</p>
+                      <p class="lead">Last LogIn :{{user.last_login}}</p>
+                      <p class="lead">Date Joined :{{user.date_joined}}</p>    
+                  </div>
+                  {%if profile.Service == 'customer' or user.is_superuser%} 
+                  <div class="col-8  shadow ms-5">
+                    <h2 class="h4 mt-3 ">Network Infomation</h2>
+                    <hr>
+                      <p class="lead">Network Type : {{profile.Network}}</p>
+                      <p class="lead">Capacity(Bandwidth) :{{profile.capacity}}</p>
+                      <p class="lead"> IP Address :{{profile.IPAddress}}</p>
+                      <p class="lead">Account /Network Number : {{profile.accountNumber}}</p>
+                  </div>
+                  {%endif%}
+                  <div class="text-start ms-5">
+                    <button class="text-center btn btn-sm ms-5 btn-outline-info"><a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
+                    <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="">Delete Account</a></button>
+                    <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="">Update Account</a></button>
+                   </div> 
+                 
+                </div>
+            
+                {%endif%}
+                {%endfor%}   
+
+         
+     </section>
+
+  </main>
+
+</body>
+
+  {% endblock content%}

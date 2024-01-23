@@ -1,0 +1,115 @@
+{% include 'style.html'%}
+{%load static %}
+
+
+  <body>
+    <!-- the navbar -->
+    <header
+      class="navbar  navbar-dark sticky-top bg-dark flex-md-nowrap p-1  shadow">
+      <a href="" 
+              class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-5">
+          TelOne<span class="text-info">NMS</span></a > 
+      <button
+        class="navbar-toggler position-absolute d-md-none "
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sidebarMenu"
+        aria-controls="sidebarMenu"
+        aria-expanded="true"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+       <p class="lead  h6 text-white">Good Day {{user.username}} You have <span>No</span> Notifications <i class="fa fa-bell text-info" aria-hidden="true"></i>
+        </p>
+       
+     <div class="dropdown me-4">
+              <a
+                href="#"
+                class="d-flex align-items-center text-blue text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src=" {% static '../static/Images/Capture.PNG'%}"
+                  alt="profilepicture"
+                  width="32"
+                  height="32"
+                  class="rounded-circle me-2"
+                /> 
+                <strong class="text-white">{{user.email}}</strong>
+              </a>
+              <ul class="dropdown-menu text-end dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="https://mail.telone.co.zw/owa/auth/logon.aspx?replaceCurrent=1&reason=2&url=https%3a%2f%2fmail.telone.co.zw%2fowa%2f" target="_blank" rel="noopener noreferrer">OutLook Inbox </a></li>
+                {% if user.is_superuser%}
+                <li><a class="dropdown-item" href="http://127.0.0.1:8000/admin/">SuperUser Dashboard</a></li>
+                {%endif%}
+                
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Log out</a></li>
+              </ul>
+            </div>
+      </div>
+    </header>      
+     
+    {% block content %} {% endblock content %}
+    <script src="{% static '../static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'%}"></script>
+  </body>
+<br>
+<footer class=" bg-dark py-5 mt-0"> 
+  <div class="container"> 
+      <div class="row center">
+          <div class="col-6 col-md-2 mb-3">
+              <h5 class="text-white">Section</h5>
+              <ul class="nav flex-column ">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary ">Home</a></li>
+
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary ">About</a></li>
+              </ul>
+          </div> 
+          <div class="col-6 col-md-2 mb-3"> 
+              <h5  class="text-white">Get In Touch</h5> <hr>
+              <ul class="nav flex-column text-secondary">
+              <!-- <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Email :</a></li> -->
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary "><strong>customer.service@telone.co.zw</strong></a></li>
+             
+              </ul>
+          </div> 
+          <div class="col-6 col-md-2  mb-3">
+              <div class="text-end">
+              <h5 class="text-white">Address</h5> <hr>
+              <ul class="nav flex-column text-secondary">
+              <li class="nav-item mb-2">Runhare House</li>
+                <li class="nav-item mb-2">Harare</li>
+              </ul>
+          </div>
+      </div> 
+          <div class="col-6 col-md-2 mb-3">
+              <h5  class="text-white">Follow Us</h5> <hr>
+              <ul class="nav flex-column text-secondary">
+              <li class="nav-item mb-2  text-info"><a href="https://www.instagram.com" class="nav-link p-0  text-secondary "><i class="fa-brands  a-tags fa-instagram"></i> Instagram</a></li>
+              <li class="nav-item mb-2"><a href="https://twitter.com"  class="nav-link p-0  text-secondary "> <i class="fa-brands facebook fa-twitter"></i> Twitter</a></li>
+              <li class="nav-item mb-2"><a href="https://www.facebook.com" class="nav-link p-0  text-secondary"> <i class="fa-brands facebook a-tags fa-facebook"></i> Facebook</a></li>
+              </ul>
+          </div>
+          
+      </div> 
+       
+</div> 
+<div class="d-flex flex-column flex-sm-row mx-md-5 center justify-content-between py-4 my-4 border-top">
+  <p> Develped by Ngoni@2023</p>
+    <p>&copy; <span id="time">2023</span> Company, Inc. All rights reserved.</p>
+    <ul class="list-unstyled d-flex">
+      <li class="ms-3"><a class="link-light text-decoration-none " href="https://twitter.com"> <i class="fa-brands facebook fa-twitter"></i> Twitter</a></li>
+      <li class="ms-3"><a class="link-light  text-decoration-none" href="https://www.instagram.com/"><i class="fa-brands  a-tags fa-instagram"></i> Instagram</a></li>
+      <li class="ms-3"><a class="link-light  text-decoration-none" href="https://www.facebook.com/"><i class="fa-brands facebook a-tags fa-facebook"></i> Facebook</a></li>
+      <li class="ms-3"><a class="link-light text-decoration-none" href="https://www.facebook.com/"><i class="fa-brands facebok a-tags fa-linkedin"></i> LinkedIn</a></li>
+    </ul> 
+  </div> 
+
+<script src="../JS/index.js"></script>
+</footer>
+</html>
+
+

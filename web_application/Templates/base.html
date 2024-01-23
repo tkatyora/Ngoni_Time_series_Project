@@ -1,0 +1,128 @@
+{% include 'style.html'%}
+{%load static %}
+ 
+  <body>
+    <!-- the navbar -->
+    <header>
+      <nav
+        class="navbar navbar-expand-sm navbar-dark shadow bg-dark rounded fixed-top "
+      >
+        <div class="container-fluid ms-5 me-5">
+          <a href="{% url 'home' %}" class="navbar-brand fs-5 ms-4 ">
+            Tel<span class="text-primary fs-4 h2">O</span>ne</a
+           >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-links navbar-collapse ms-5 w-25 me-5"
+            id="navbarCollapse"
+          >
+            {%if not user.is_authenticated%}
+            <div class="navbar-nav  nav-links">
+              <hr />
+               <a
+                class="nav-link fs-6 active navs-link"
+                aria-current="page"
+                 href="{% url "home" %}"
+                ><i class="text-info fa-solid fa-house"></i> Home</a
+              >
+              <a
+                class="nav-link fs-6 ms-2 active navs-link"
+                aria-current="page"
+                 href="{% url "about" %}"
+                ><i class="text-info fa-solid fa-circle-info"></i>About</a
+              >
+           </div>
+          </div>
+            
+             
+              <a class="nav-link  text-warning active " href="{% url "sign_in" %}"
+              ><i class="fa-solid fa-circle-user"></i>Log In</a
+            >
+             
+                {%else%}
+               
+               
+                <a href="" class="text-start nav-link a-tags p4 .navs-link  ">GoodDay   <span class="mx-3 login">     {{user.first_name}}</span> </a>
+                
+         
+       
+         <a href="" class="text-start nav-link a-tags .navs-link  "> <i class="fa-solid fa-circle-user"></i> {{user.email}}</a>
+          <a class="nav-link login" href="{% url "logout" %}">| Log Out</a> 
+                 {%endif%}
+                
+        
+      </nav>
+    </header>
+ 
+    {% block content %}
+      {% endblock content %}
+    <script src="{% static '../static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'%}"></script>
+    
+  </body>
+   
+  <footer class=" bg-dark py-5 mt-0"> 
+      <div class="container"> 
+          <div class="row center">
+              <div class="col-6 col-md-2 mb-3">
+                  <h5 class="text-white">Section</h5>
+                  <ul class="nav flex-column ">
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary ">Home</a></li>
+
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary ">About</a></li>
+                  </ul>
+              </div> 
+              <div class="col-6 col-md-2 mb-3"> 
+                  <h5  class="text-white">Get In Touch</h5> <hr>
+                  <ul class="nav flex-column text-secondary">
+                  <!-- <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Email :</a></li> -->
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary "><strong>customer.service@telone.co.zw</strong></a></li>
+                 
+                  </ul>
+              </div> 
+              <div class="col-6 col-md-2  mb-3">
+                  <div class="text-end">
+                  <h5 class="text-white">Address</h5> <hr>
+                  <ul class="nav flex-column text-secondary">
+                  <li class="nav-item mb-2">Runhare House</li>
+                    <li class="nav-item mb-2">Harare</li>
+                  </ul>
+              </div>
+          </div> 
+              <div class="col-6 col-md-2 mb-3">
+                  <h5  class="text-white">Follow Us</h5> <hr>
+                  <ul class="nav flex-column text-secondary">
+                  <li class="nav-item mb-2  text-info"><a href="https://www.instagram.com" class="nav-link p-0  text-secondary "><i class="fa-brands  a-tags fa-instagram"></i> Instagram</a></li>
+                  <li class="nav-item mb-2"><a href="https://twitter.com"  class="nav-link p-0  text-secondary "> <i class="fa-brands facebook fa-twitter"></i> Twitter</a></li>
+                  <li class="nav-item mb-2"><a href="https://www.facebook.com" class="nav-link p-0  text-secondary"> <i class="fa-brands facebook a-tags fa-facebook"></i> Facebook</a></li>
+                  </ul>
+              </div>
+              
+          </div> 
+           
+    </div> 
+    <div class="d-flex flex-column flex-sm-row mx-md-5 center justify-content-between py-4 my-4 border-top">
+      <p> Develped by Ngoni@2023</p>
+        <p>&copy; <span id="time">2023</span> Company, Inc. All rights reserved.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3"><a class="link-light text-decoration-none " href="https://twitter.com"> <i class="fa-brands facebook fa-twitter"></i> Twitter</a></li>
+          <li class="ms-3"><a class="link-light  text-decoration-none" href="https://www.instagram.com/"><i class="fa-brands  a-tags fa-instagram"></i> Instagram</a></li>
+          <li class="ms-3"><a class="link-light  text-decoration-none" href="https://www.facebook.com/"><i class="fa-brands facebook a-tags fa-facebook"></i> Facebook</a></li>
+          <li class="ms-3"><a class="link-light text-decoration-none" href="https://www.facebook.com/"><i class="fa-brands facebok a-tags fa-linkedin"></i> LinkedIn</a></li>
+        </ul> 
+      </div> 
+    
+    <script src="../JS/index.js"></script>
+  </footer>
+</html>
+
+

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+ {%block content%} 
+ {%load static%}
+  {% block title%}
+<head>
+  <meta name="Key Words" content="Mangaging the User Profile">
+  <meta name="description" content="This is a platform for Everyone To chenge and update The user Profile ">
+<title>NS-AnimalControlSyetm |Update Profile</title>
+</head>
+{%endblock title%}
+<body>
+  {% load crispy_forms_tags %}
+  <br />
+  <br />
+  <br />
+  <section class="regester-hero">
+    <form id="form-id" method="POST" class="shadow-lg mt-5">
+    {% csrf_token %}
+      <br />
+      <div class="message mt-3 text-center">
+        <h5> <strong>Update User Profile</strong> </h5>
+      </div>
+    {% for message in messages %} 
+    {% if message.tags == 'warning'%}
+        <div class="start-center container">
+            <h6 class=" start-center header-red">{{message}}</h6>
+        </div>
+    {%endif%} 
+    {%endfor%}
+        <br />
+        <div class="forminput">
+          {% comment %} <h4 class="text-center">Account Infromation</h4> {% endcomment %}
+          {% comment %} <div class="formrow mb-2">
+            <div class="form">
+              <p class="lead">
+                <strong>{{userform.username|as_crispy_field}}</strong>
+              </p>
+            </div>
+            <div class="form">
+              <p class="lead">
+                <strong>{{userform.email|as_crispy_field}}</strong>
+              </p>
+            </div>
+          </div> {% endcomment %}
+          {% comment %} <h4 class="text-center">Personal Infromation</h4> {% endcomment %}
+          <div class="formrow mb-2">
+            <div class="form">
+              <p class="lead">
+                <strong>{{userform.first_name|as_crispy_field}}</strong>
+              </p>
+            </div>
+            <div class="form">
+              <p class="lead">
+                <strong>{{userform.last_name|as_crispy_field}}</strong>
+              </p>
+            </div>
+          </div>
+          <div class="formrow mb-2">
+            <div class="form">
+              <p class="lead">
+                <strong>{{form.city|as_crispy_field}}</strong>
+              </p>
+            </div>
+            <div class="form">
+              <p class="lead">
+                <strong>{{form.address|as_crispy_field}}</strong>
+              </p>
+            </div>
+          </div>
+          <div class="formrow mb-2">
+            <div class="form">
+              <p class="lead">
+                <strong>{{form.phoneNumber|as_crispy_field}}</strong>
+              </p>
+            </div>
+            <div class="form">
+              <p class="lead">
+                <strong>{{form.gender|as_crispy_field}}</strong>
+              </p>
+            </div>
+          </div>
+          <div class="formrow mb-2">
+            <div class="form">
+              <p class="lead">
+                <strong>{{form.profilePicture|as_crispy_field}}</strong>
+              </p>
+            </div>
+          </div>
+          
+        </div>
+    
+      <br />
+
+    <div class="text-center mb-5">
+      <button
+          type="button"
+          id="back"
+          class="btn btn-secondary home more button"
+        >
+          <a href="{% url 'profile'%}">Cancel</a>
+        </button>
+        <button type="submit" class="btn btn-secondary ms-5 button more">
+          Save
+        </button>
+    </div>
+  </br> 
+  </form>
+
+  </section>
+  
+
+  <script src="{% static '../static/JS/view.js'%}"></script>
+</body>
+{%endblock content%}
+
+

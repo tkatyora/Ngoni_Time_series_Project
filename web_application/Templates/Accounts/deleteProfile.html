@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{%block content%}
+{%load static%}
+{% block title%}
+<head>
+  <meta name="Key Words" content="Nitacagra Softwares Deletion Of Account" />
+  <meta
+    name="description"
+    content="This page if for a user to Delete the profile that is created  "
+  />
+  <title>NS-AnimalControlSsyetem| DeleteAcocunt</title>
+</head>
+{%endblock title%} 
+
+<body>
+    <section class="delete-hero">
+      <form id="" class="shadow-lg mt-3" method="POST">
+        {% csrf_token %}
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="message mt-3 text-center">
+          <h5>
+            Are You Sure You Wan To Delete This Account 
+        </div>
+        <br /><br />
+        <div class="txt ms-3">
+          <p class="lead">Username : <b> {{user.username.title}}</b></p>
+          <p class="lead"><b>Fisrt Name</b> : <strong>{{user.first_name.title}}</strong> </p>
+          <p class="lead">Surname: <strong>{{user.last_name.title}}</strong></p>
+          <p class="lead ">Email: <strong>{{user.email}}</strong></em></p>
+          {% for data in deletedProfile%}
+          {{data.city}}
+          {%endfor%}
+
+          <br />
+          <div class="text-center">
+            <button
+              type="button"
+              id="back"
+              class="btn btn-secondary w-25"
+            >
+            <a href="{% url 'dashboard' %}"></a>
+              No
+            </button>
+            <button type="submit" class="btn btn-secondary w-25 ">
+              Yes
+            </button>
+            <br />
+            <br />
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <script src="../JS/view.js"></script>
+</body>
+
+ {% endblock%}

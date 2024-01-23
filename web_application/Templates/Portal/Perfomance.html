@@ -1,0 +1,88 @@
+{% extends 'other.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+<head>
+  <meta name="Key Words" content="NMS Web Application" />
+  <meta
+    name="description"
+    content=""
+  />
+{% block title%}
+    <title>Telone |Network Statistics</title>
+{%endblock title%}
+</head>
+
+<body class="">
+  <main class="mt-5 mx-5 fs-5" >
+    <div class=" text-center">
+      <h5  class=""> Network Statistics - Up Down Ratio </h5>   
+      <hr>
+      <br>
+    </div>  
+    <form id='form-id'  method = 'GET' >
+          {% csrf_token %}                                 
+    <div class="d-flex justify-content-center  fs-5 g-5"> 
+     
+                                    {% for data  in stats %}
+                                    
+                                    {%if data.Service == 'Admin' %}
+                                    {%if data.user.username == user.username or user.is_staff %} 
+                                   
+      <div class="col-4">
+        <div class="p-4 border shadow bg-light">  
+          <div class="form mb-3 mx-sm-3">
+            <label for ='username' class="form-label user">Enter Customer IP</label>
+            <input
+             type="text"
+             name="ip"
+             class="form-control input"
+             required
+             autocomplete="True" 
+           />
+         </div>
+         <div class="mb-3 mx-sm-3 form">
+           <label for="password" class="form-label"> Select Date</label>
+           <input
+             type="date"
+             name="date"
+             class="form-control input"
+             
+           /> 
+          
+         </div> 
+         <br>  
+         
+         <img src="{% static '../../PredictionModel/output_plot.png'%}" alt="pic">
+         <img src="{{data}}" alt="">
+         <div class="text-center">
+          <button class="w-25  mb-5 btn btn-sm bg-info">
+            <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">
+            Back  </a>
+          </button> 
+          <button type="submit" class="w-25 mb-5 text-black btn btn-sm bg-success">
+           Submit
+          </button> 
+         </div>                            
+         
+        </div> 
+        
+      </div>   
+      
+           
+                                      {%endif%}
+                                       {%endif%}
+                                        {%endfor%}
+                                         
+     <div>
+              
+              <br/> 
+             </div> 
+            </div>
+  
+  </form>
+  </main>
+
+
+</body>
+{%endblock content%}

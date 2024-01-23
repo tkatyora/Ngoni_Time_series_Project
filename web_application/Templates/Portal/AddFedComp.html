@@ -1,0 +1,58 @@
+{% extends 'dashboard.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+{% block title%}
+<head>
+  <meta name="Key Words" content="Web Application" />
+  <meta
+    name="description"
+    content="This page is creating new Detailed Discription of  services including service type and price aswell as functinality"
+  />
+    <title>Telone | Add Document</title>
+{%endblock title%}
+</head>
+<body>
+ <main class="col-md-9 ms-sm-auto col-lg-10 align-content-center px-md-4"
+     style="width: 68%">
+    <form id="form-id" method="POST" enctype="multipart/form-data" class="shadow-lg mx-5 float-start mt-5"
+          style='width: 55%'>
+    {% csrf_token %}
+    <br />
+    <div class="message mt-3 text-center">
+      <h5 class="text-center">Add Complain </h5>
+    </div> 
+    {% for message in messages %} 
+    <div class="">
+       {% if message.tags == 'warning'%}
+          <p class="text-danger text-center">{{message}}</p>
+       {% elif message.tags == 'success'%}
+        <p class="text-success text-center">{{message}}</p>
+    </div>
+    {%endif%}
+     {%endfor%}
+    <br />
+    <div class=" text-start mx-sm-5">
+       <p class="lead mt-3">
+        <strong>{{form.type|as_crispy_field}}</strong> 
+      </p>
+      
+       <p class="lead mt-3">
+        <strong>{{form.body|as_crispy_field}}</strong> 
+      </p>
+     
+    </div>
+  </br>
+    <div class="text-center mb-5">
+      <button type="submit" class="btn btn-info ms-5 w-50 button more">
+        Create
+      </button>
+      <button type="submit" class="btn btn-info ms-5 w-50 button more">
+       Back
+      </button>
+    </div>
+  </br>
+  </form>
+</main>
+</body>
+{%endblock content%}

@@ -1,0 +1,95 @@
+{% extends 'other.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+<head>
+  <meta name="Key Words" content="NMS Web Application" />
+  <meta
+    name="description"
+    content=""
+  />
+{% block title%}
+    <title>Telone |View Complain</title>
+{%endblock title%}
+</head>
+
+<body class="">
+  <main class="mt-5 mx-5 fs-5" >
+    <div class=" text-center">
+      <h5  class=""> View All Complians and Feedbacks</h5>   
+      <hr>
+      <br>
+    </div>                                   
+    <div class="  row g-5"> 
+                                    {% for data  in fedcomp %}
+                                    
+                                    {%if data.created_by.username == user.username or user.is_staff %} 
+      <div class="col-4">
+        <div class="p-4 border shadow bg-light">
+                                             {%if data.type == 'Complain'%}
+          <p class=" text-start"> <strong class="text-warning"> {{data.type}}</strong> 
+            : {{data.created_by.first_name.title}} 
+            {%endif%}
+            {%if data.type == 'Complain'%}
+            <p >
+          </p>
+                                            {%else%}
+          <p class=" text-end"> <strong class="text-success"> {{data.type}}</strong>
+            : {{data.created_by.first_name.title}} 
+            {%endif%}
+            {%if data.type == 'Complain'%} </p>
+                                            {%endif%}
+          <p >{{data.body}} <br>
+            <span class="text-secondary">@{{data.created}} </span></p>
+            {%if data.type == 'Complain'%} 
+          <div class="fw-bold text-start">
+            <h5 class=" text-warning ">Reply</h5>
+                                      {%if data.reply == 'None' or   data.created == data.updated %}
+            <p class="text-danger fs-6" >
+      
+                                              {%if data.created_by.username == user.username %} 
+                                              
+                There is No reply yet
+                                              {%else%}
+             
+              You have not Replied to this Complain
+            </p>
+                                              {%endif%}
+                                     {%else%}
+            <p > hi{{data.reply}} <br>
+                @{{data.updated}}</p>
+                                    {%endif%}
+                                    
+                                    {%if user.is_staff%}
+           <button
+               class="text-center btn btn-sm btn-outline-info">
+              <a class="nav-link p-0 text-muted" href="">Reply</a>
+            </button></p>
+            {%endif%}
+          </div>
+          {%else%}
+          <br>
+          <br>
+          <br>
+          <br>
+          {%endif%} 
+        </tr>
+        </div>
+      </div>                         
+   
+                                        {%endif%} 
+                                      
+                                        {%endfor%}
+          
+             <div>
+              <button class="text-center mb-5 btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
+              <br/> 
+             </div> 
+            </div>
+  
+  
+  </main>
+
+
+</body>
+{%endblock content%}

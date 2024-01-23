@@ -1,0 +1,60 @@
+{% extends 'dashboard.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+{% block title%}
+<head>
+  <meta name="Key Words" content="Network Failure,Telone Network Management System" />
+  <meta
+    name="description"
+    content="This page is creating new Clients"
+  />
+    <title>Telone| Add New Client</title>
+{%endblock title%}
+</head>
+<body>
+ <main class="col-md-9 ms-sm-auto col-lg-10 align-content-center px-md-4"
+     style="width: 68%">
+    <form id="form-id" method="POST" class="shadow-lg mx-5 float-start mt-5"
+          style='width: 55%'>
+    {% csrf_token %}
+    <br />
+    <div class="message mt-3 text-center">
+      <h5 class="text-center">Register New Client </h5>
+    </div> 
+    <br />
+   
+  </br>
+  <div class=" text-start mx-sm-5">
+    <h5>Network Infromation</h5>
+    <p class="lead mt-3">
+     <strong>{{networkForm.IPAddress|as_crispy_field}}</strong> 
+   </p>
+    <p class="lead mt-3">
+     <strong>{{networkForm.capacity|as_crispy_field}}</strong>  
+   </p>
+   
+    <p class="lead mt-3">
+     <strong>{{networkForm.Network|as_crispy_field}}</strong> 
+   </p>
+   <p class="lead mt-3">
+    <strong>{{networkForm.Service|as_crispy_field}}</strong> 
+  </p>
+  <p class="lead mt-3">
+    <strong>{{networkForm.customer|as_crispy_field}}</strong> 
+  </p>
+  <p class="lead mt-3">
+    <strong>{{networkForm.networkAdmin|as_crispy_field}}</strong> 
+  </p>
+   <br />
+ </div>
+    <div class="text-center mb-5">
+      <button type="submit" class="btn btn-info ms-5 w-50 button more">
+        Create
+      </button>
+    </div>
+  </br>
+  </form>
+</main>
+</body>
+{%endblock content%}
