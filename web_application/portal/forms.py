@@ -13,7 +13,7 @@ class Feedback_ComplainsForm(ModelForm):
                                       'cols':3, 
                                   }
                               ))
-    reply =forms.CharField(label='Write Reply', required=False, help_text='Write Anything related to the e36(optional) ',
+    reply =forms.CharField(label='Write Reply', required=False, help_text='Enter your reply',
                               widget=forms.Textarea(
                                   attrs={
                                       'rows':3,

@@ -48,7 +48,7 @@ def NetworkPerfomance(request):
     }  
     return render(request , 'Portal/Perfomance.html',content)
 
-#--------------------------------CRUD FOR FAILURE PREDICTION
+#--------------------------------CRUD FOR FAILURE PREDICTION-------------------------------------------
 @login_required(login_url='sign_in')
 def NetworkPrediction(request):
     newdata_set = pd.read_csv('PredictionModel/prediction.csv')
@@ -62,7 +62,8 @@ def NetworkPrediction(request):
     #     data = reader
     content ={}
     content ={
-        'predictions':prediction
+        'predictions':prediction,
+        'recomand': users
    
     }  
     return render(request , 'Portal/Prediction.html',content)
@@ -100,31 +101,33 @@ def AddFedComp(request):
 def ViewFedComp(request):
     content ={}
     content ={
-        'fedcomp': fedcomp
+        'fedcomp': fedcomp,
+    
     }  
     return render(request , 'Portal/ViewComp.html',content)
 
-#3.3 UPDATE FEDCOMP
+#3.3 REPLYCOMP
 @login_required(login_url='sign_in') 
-def updateFedComp(request, pk):
-    fedcomp_to_update = fedcomp.objects.get(id=pk)  
+def replyComp(request, pk):
+    reply = Feedback_Complains.objects.get(id=pk)  
     if request.method == 'POST':
-        form = Feedback_ComplainsForm(request.POST, instance=fedcomp_to_update)
+        form = Feedback_ComplainsForm(request.POST, instance=reply)
         if form.is_valid():
             form.save()
             messages.success(request, 'Reply updated succesfully')
+            return redirect('dashboard')
             
         else:
             messages.warning(request, 'Sorry Reply Failled')
     else:
-        form = Feedback_ComplainsForm(instance=e36_to_update)
+        form = Feedback_ComplainsForm(instance=reply)
     content = {}
     content = {
         'form':  form,
-        'fedCompUpdate': fedcomp_to_update
+        'reply': reply
 
     }
-    return render(request, 'fedCompUpdate.html', content)
+    return render(request, 'Portal/reply.html', content)
 
 
 

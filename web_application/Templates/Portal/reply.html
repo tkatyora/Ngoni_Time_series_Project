@@ -1,0 +1,110 @@
+{% extends 'dashboard.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+<head>
+  <meta name="Key Words" content="Web Development, Free Blog Hosting,Static Websites,Web Application" />
+  <meta
+    name="description"
+    content="This page is creating new services that are offred by NitacagraSoftwares  
+    Such as Free Blog Hosting abd Teaching Learners Web Development"
+  />
+{% block title%}
+    <title>Telone |Reply Complain</title>
+{%endblock title%}
+</head>
+
+<body>
+<main class="col-md-9 col-lg-10 align-content-center px-md-4"
+     style="width: 75%">
+     <main class="col-md-9  col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            
+            <input type="search"  placeholder="search E36" class="btn btn-sm btn-outline-secondary"></input>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Search</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar" class="align-text-bottom"></span>
+            Filter
+          </button>
+        </div>
+      </div>
+  </main>
+  <form id="form-id" method="POST" enctype="multipart/form-data" class="shadow-lg mx-5 float-start mt-5"
+  style='width: 55%'>
+{% csrf_token %}
+<br />
+<div class="message mt-3 text-center">
+<h5 class="text-center">Reply of Complain</h5>
+<br>
+{% for message in messages %}
+{% if message.tags == 'success'%}
+<div class=" alert alert-success">
+  <p class="">{{message}}</p>
+</div>
+{%endif%} 
+{%endfor%}
+{% if form.errors %}
+{% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+              {% for message in messages %}
+                {% if message.tags == 'warning'%}
+              <p class="">{{message}}</p>
+                <strong>{{ field.label }}: {{ error|escape }}</strong>
+            </div>
+            {%endif%} 
+          {%endfor%}
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+      </div> 
+      <br />
+      <div class=" text-start mx-sm-5">
+        <p class="lead ">
+          <strong>Complain ~ {{reply.body}}
+            <br>
+          From  ~ {{reply.created_by}} <br>
+          @{{reply.created}}</strong> 
+          </p>
+          <p class="lead ">
+            <strong>{{form.type|as_crispy_field}}</strong> 
+            </p>
+      <p class="lead ">
+      <strong>{{form.reply|as_crispy_field}}</strong> 
+      </p>
+
+      </div>
+      </br>
+      <div class="text-center mb-5">
+      <button type="submit" class="btn btn-info ms-5 w-50 button more">
+      Submit
+      </button>
+      </div>
+      </br>
+      </form>
+ </main>
+  
+  
+
+  <script src="{% static '../static/JS/view.js'%}"></script>
+</body>
+{%endblock content%}
+
+
+
+
+
+
+
+
+  

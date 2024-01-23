@@ -41,8 +41,8 @@
              autocomplete="True" 
            />
          </div>
-         <div class="mb-3 mx-sm-3 form">
-           <label for="password" class="form-label"> Select Date</label>
+         <div class="mb-4 mx-sm-3 form">
+           <label for="password" class="form-label"> Select Start Date</label>
            <input
              type="date"
              name="date"
@@ -51,10 +51,19 @@
            /> 
           
          </div> 
+         <div class="mb-3 mx-sm-3 form">
+          <label for="password" class="form-label"> Select End Date</label>
+          <input
+            type="date"
+            name="date"
+            class="form-control input"
+            
+          /> 
+         
+        </div> 
          <br>  
          
-         <img src="{% static '../../PredictionModel/output_plot.png'%}" alt="pic">
-         <img src="{{data}}" alt="">
+         <!-- <img src="{% static '../../PredictionModel/output_plot.png'%}" alt="pic"> -->
          <div class="text-center">
           <button class="w-25  mb-5 btn btn-sm bg-info">
             <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">

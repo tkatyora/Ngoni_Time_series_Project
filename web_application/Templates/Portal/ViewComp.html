@@ -63,7 +63,7 @@
                                     {%if user.is_staff%}
            <button
                class="text-center btn btn-sm btn-outline-info">
-              <a class="nav-link p-0 text-muted" href="">Reply</a>
+              <a class="nav-link p-0 text-muted" href="{% url 'reply' data.id %}">Reply</a>
             </button></p>
             {%endif%}
           </div>
