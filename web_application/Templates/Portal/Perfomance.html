@@ -22,7 +22,7 @@
     </div>  
     <form id='form-id'  method = 'GET' >
           {% csrf_token %}                                 
-    <div class="d-flex justify-content-center  fs-5 g-5"> 
+    <div class="d-flex justify-content-start  fs-5 g-5"> 
      
                                     {% for data  in stats %}
                                     
@@ -60,10 +60,8 @@
             
           /> 
          
-        </div> 
+         </div> 
          <br>  
-         
-         <!-- <img src="{% static '../../PredictionModel/output_plot.png'%}" alt="pic"> -->
          <div class="text-center">
           <button class="w-25  mb-5 btn btn-sm bg-info">
             <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">
@@ -72,11 +70,16 @@
           <button type="submit" class="w-25 mb-5 text-black btn btn-sm bg-success">
            Submit
           </button> 
-         </div>                            
-         
-        </div> 
+         </div>                             
+      </div>  
+      </div> 
+      
+      <div class="ms-5">
+        <p>Image for Up Down Ratio</p>
         
-      </div>   
+          <img src="{% static '../static/Images/Prediction/updowns.png'%} " class=" d-block "
+          style="height: 800px;"  width="800px"> 
+      </div>
       
            
                                       {%endif%}
@@ -86,8 +89,8 @@
      <div>
               
               <br/> 
-             </div> 
-            </div>
+            </div> 
+    </div>
   
   </form>
   </main>

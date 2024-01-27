@@ -36,7 +36,7 @@ def NetworkPerfomance(request):
     plt.title('DownUp Ratio for the whole network')
     plt.xlabel('Date')
     plt.ylabel('DownUp Ratio')
-    plt.savefig('PredictionModel/output_plot.png')
+    plt.savefig('static/Images/Prediction/updowns.png')
     data = plt.show()
    
     content ={}
