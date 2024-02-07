@@ -18,7 +18,7 @@
             <h4 class="lead text-danger">NB: Please Update Your Prolile  </h4>
            {% for profile in profiles%}
           {% if profile.user.username == user.username%}
-            <h2 class="lead mt-3 text-warning">Welcome <strong>
+            <h2 class="lead mt-3 text-blue">Welcome <strong>
               {{user.first_name.title}} 
             
           {% if profile.Service == 'customer'%}

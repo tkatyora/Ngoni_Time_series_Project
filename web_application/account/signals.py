@@ -28,6 +28,3 @@ def create_profile(sender,instance,created,*args,**kwargs):
         profile.save
 
 
-        
-        
-#post_save.connect(create_profile, sender=User)  another way of not using the receiver decorator

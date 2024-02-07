@@ -8,7 +8,7 @@
       class="navbar  navbar-dark sticky-top bg-dark flex-md-nowrap p-1  shadow">
       <a href="" 
               class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-5">
-          TelOne<span class="text-info">NMS</span></a > 
+          GNP<span class="text-info">NMS</span></a > 
       <button
         class="navbar-toggler position-absolute d-md-none "
         type="button"
@@ -25,14 +25,19 @@
        
      <div class="dropdown me-4">
               <a
-               href="{% url 'logout' %}"
+                href="#"
                 class="d-flex align-items-center text-blue text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <strong class="text-white">Sign Out</strong>
-              </a>
-                
+                <img
+                  src=" {% static '../static/Images/Capture.PNG'%}"
+                  alt="profilepicture"
+                  width="32"
+                  height="32"
+                  class="rounded-circle me-2"
+                /> 
+                <strong class="text-white">{{user.email}}</strong>
               </a>
               <ul class="dropdown-menu text-end dropdown-menu-dark text-small shadow">
                 <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -67,7 +72,7 @@
               <h5  class="text-white">Get In Touch</h5> <hr>
               <ul class="nav flex-column text-secondary">
               <!-- <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Email :</a></li> -->
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary "><strong>customer.service@telone.co.zw</strong></a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary "><strong>info@gnp.co.zw</strong></a></li>
              
               </ul>
           </div> 
@@ -75,7 +80,7 @@
               <div class="text-end">
               <h5 class="text-white">Address</h5> <hr>
               <ul class="nav flex-column text-secondary">
-              <li class="nav-item mb-2">Runhare House</li>
+              <li class="nav-item mb-2">Office 8 Zimpost</li>
                 <li class="nav-item mb-2">Harare</li>
               </ul>
           </div>

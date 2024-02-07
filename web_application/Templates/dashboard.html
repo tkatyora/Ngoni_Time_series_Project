@@ -8,7 +8,7 @@
       class="navbar  navbar-dark sticky-top bg-dark flex-md-nowrap p-1  shadow">
       <a href="" 
               class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-5">
-          TelOne<span class="text-info">NMS</span></a > 
+          GNP<span class="text-info">NMS</span></a > 
       <button
         class="navbar-toggler position-absolute d-md-none "
         type="button"
@@ -27,8 +27,8 @@
        
      <div class="dropdown me-4">
               <a
-                href="{% url 'logout' %}"
-                class="d-flex align-items-center text-blue text-decoration-none dropdown-toggle"
+              href="{% url 'logout' %}"
+                class="d-flex align-items-center text-info text-decoration-none "
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
@@ -39,7 +39,7 @@
                   height="32"
                   class="rounded-circle me-2"
                 /> 
-                <strong class="text-white">Sign Out</strong>
+                {{user.username}}
               </a>
 
       </div>
@@ -67,7 +67,7 @@
             <ul class="nav flex-column">
               <li class="nav-item ">
                 {%if user.is_superuser or users.Service == 'Admin'%}
-                <a class="nav-link " href="{% url 'Perfomance' %}"  >
+                <a class="nav-link " href="{% url 'Perfomance' %}"   >
                   Network Statistics
                   </a>  
                   
@@ -116,15 +116,15 @@
             <ul class="nav flex-column">
               <li class="nav-item ">
                 {%if users.Service == 'Admin' or user.is_superuser%}
-                <a class="nav-link " href="{%url 'ViewComp' %} " >
+                <a class="nav-link " href="{%url 'ViewComp' %} " target="_blank" rel="noopener noreferrer">
                  View Clinets Feedback and Complains
                  </a>
                  {%endif%}
                  {%if users.Service == 'customer' or user.is_superuser%}
-                 <a class="nav-link " href="{%url 'addFed' %}"  >
+                 <a class="nav-link " href="{%url 'addFed' %}"  target="_blank" rel="noopener noreferrer">
                   Add Complian  and Feedbacks
                  </a> 
-                 <a class="nav-link " href="{%url 'ViewComp' %}"  >
+                 <a class="nav-link " href="{%url 'ViewComp' %}"  target="_blank" rel="noopener noreferrer">
                  View Complain or Feedbacks
                  </a>
                  
@@ -141,11 +141,12 @@
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="{%url 'view_clients' %}">
+            <a class="nav-link" href="{%url 'view_clients'%}">
               <span data-feather="file-text" class="align-text-bottom"></span>
              View All customers
             </a>
           </li>
+       
          
         </ul>
         <hr>
@@ -164,7 +165,7 @@
               <span data-feather="file" class=" text-black align-text-bottom"></span>
             View Profile
             </a>  
-             
+           
             <a class="nav-link " href="{% url 'logout' %}">
               <span data-feather="file" class=" text-black align-text-bottom"></span>
               Log out
@@ -198,7 +199,7 @@
               <h5  class="text-white">Get In Touch</h5> <hr>
               <ul class="nav flex-column text-secondary">
               <!-- <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Email :</a></li> -->
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary "><strong>customer.service@telone.co.zw</strong></a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary "><strong>info@gnp.co.zw</strong></a></li>
              
               </ul>
           </div> 
@@ -206,7 +207,7 @@
               <div class="text-end">
               <h5 class="text-white">Address</h5> <hr>
               <ul class="nav flex-column text-secondary">
-              <li class="nav-item mb-2">Runhare House</li>
+              <li class="nav-item mb-2">Office 8 Zimpost</li>
                 <li class="nav-item mb-2">Harare</li>
               </ul>
           </div>

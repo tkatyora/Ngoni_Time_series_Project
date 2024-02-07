@@ -20,9 +20,13 @@
   <div class="container">
    <h3 class="p-4 text-start">All Customers</h3>
    <div class="text-end">
-    <button type="submit" class="btn btn-info ms-5 text-end  button ">
+    <button type="submit" class="btn btn-info ms-5 w-25 button ">
+      <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">
+        Back  </a>
+    </button>
+    <button type="submit" class="btn btn-info ms-5 text-end w-25 button ">
     
-      <a class="nav-link   p-0 text-muted" href="http://127.0.0.1:8000/admin/auth/user/">
+      <a class="nav-link   p-0 text-muted" href="http://127.0.0.1:8000/admin/auth/user/add">
         Add New Customer </a>
     </button>
    </div>
@@ -51,7 +55,7 @@
          
          <tr>
           {%if data.Service == 'customer' %}
-           <td>{{data.user.first_name}}</td>
+           <td>{{data.user.username}}</td>
            <td>{{data.user.email}}</td>
            <td>{{data.user.username}}</td>
            <td>{{data.city}}</td>
@@ -76,15 +80,7 @@
      </table>
    </div>
  </div>
- <div class="text-center mb-5">
-   <button type="submit" class="btn btn-info ms-5 w-25 button ">
-     Create
-   </button>
-   <button type="submit" class="btn btn-info ms-5 w-25 button ">
-     <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">
-       Back  </a>
-   </button>
- </div>
+ 
 
 </main>
 

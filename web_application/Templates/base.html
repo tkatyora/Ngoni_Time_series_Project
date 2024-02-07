@@ -8,9 +8,22 @@
         class="navbar navbar-expand-sm navbar-dark shadow bg-dark rounded fixed-top "
       >
         <div class="container-fluid ms-5 me-5">
-          <a href="{% url 'home' %}" class="navbar-brand fs-5 ms-4 ">
-            Tel<span class="text-primary fs-4 h2">O</span>ne</a
-           >
+          <a
+                href="{% url 'home' %}"
+                class="d-flex align-items-center navbar-brand fs-5 ms-4 text-decoration-none "
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                src='../static/Images/home.jpeg' alt="img"
+                  alt="profilepicture"
+                  width="120"
+                  height="30"
+                  class=" "
+                /> 
+               
+              </a>
+
           <button
             class="navbar-toggler"
             type="button"
@@ -85,7 +98,7 @@
                   <h5  class="text-white">Get In Touch</h5> <hr>
                   <ul class="nav flex-column text-secondary">
                   <!-- <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Email :</a></li> -->
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary "><strong>customer.service@telone.co.zw</strong></a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0  text-secondary "><strong>info@gnp.co.zw</strong></a></li>
                  
                   </ul>
               </div> 
@@ -93,7 +106,7 @@
                   <div class="text-end">
                   <h5 class="text-white">Address</h5> <hr>
                   <ul class="nav flex-column text-secondary">
-                  <li class="nav-item mb-2">Runhare House</li>
+                  <li class="nav-item mb-2"> Office Suite Zimpost</li>
                     <li class="nav-item mb-2">Harare</li>
                   </ul>
               </div>
