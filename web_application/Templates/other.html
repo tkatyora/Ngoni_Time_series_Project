@@ -25,19 +25,14 @@
        
      <div class="dropdown me-4">
               <a
-                href="#"
+               href="{% url 'logout' %}"
                 class="d-flex align-items-center text-blue text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <img
-                  src=" {% static '../static/Images/Capture.PNG'%}"
-                  alt="profilepicture"
-                  width="32"
-                  height="32"
-                  class="rounded-circle me-2"
-                /> 
-                <strong class="text-white">{{user.email}}</strong>
+                <strong class="text-white">Sign Out</strong>
+              </a>
+                
               </a>
               <ul class="dropdown-menu text-end dropdown-menu-dark text-small shadow">
                 <li><a class="dropdown-item" href="#">Settings</a></li>

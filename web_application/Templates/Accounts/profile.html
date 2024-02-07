@@ -15,7 +15,7 @@
             <span class="text-center ">
                 <h1>My Profile</h1>
             </span>
-            <h4 class="lead heading text-danger">NB: Please Update Your Prolile  </h4>
+            <h4 class="lead text-danger">NB: Please Update Your Prolile  </h4>
            {% for profile in profiles%}
           {% if profile.user.username == user.username%}
             <h2 class="lead mt-3 text-warning">Welcome <strong>
@@ -26,7 +26,7 @@
           {%else%}
            <h2> <strong>Below is Company   Information</strong></h2>
            {%endif%} 
-                <div class="row container align-content-between ms-5  p-4 g-5">
+                <div class="row container  text-black align-content-between ms-5  p-4 g-5">
                   <div class="col-8 shadow ms-5">
                     <h2 class="h4 mt-3 ">Compnay Information</h2>
                     <hr>
@@ -53,8 +53,8 @@
                   {%endif%}
                   <div class="text-start ms-5">
                     <button class="text-center btn btn-sm ms-5 btn-outline-info"><a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
-                    <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="">Delete Account</a></button>
-                    <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="">Update Account</a></button>
+                    <!-- <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="">Delete Account</a></button>
+                    <button class="text-center btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="">Update Account</a></button> -->
                    </div> 
                  
                 </div>

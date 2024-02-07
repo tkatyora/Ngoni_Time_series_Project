@@ -116,15 +116,15 @@
             <ul class="nav flex-column">
               <li class="nav-item ">
                 {%if users.Service == 'Admin' or user.is_superuser%}
-                <a class="nav-link " href="{%url 'ViewComp' %} " target="_blank" rel="noopener noreferrer">
+                <a class="nav-link " href="{%url 'ViewComp' %} " >
                  View Clinets Feedback and Complains
                  </a>
                  {%endif%}
                  {%if users.Service == 'customer' or user.is_superuser%}
-                 <a class="nav-link " href="{%url 'addFed' %}"  target="_blank" rel="noopener noreferrer">
+                 <a class="nav-link " href="{%url 'addFed' %}"  >
                   Add Complian  and Feedbacks
                  </a> 
-                 <a class="nav-link " href="{%url 'ViewComp' %}"  target="_blank" rel="noopener noreferrer">
+                 <a class="nav-link " href="{%url 'ViewComp' %}"  >
                  View Complain or Feedbacks
                  </a>
                  
@@ -141,15 +141,9 @@
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{%url 'view_clients' %}">
               <span data-feather="file-text" class="align-text-bottom"></span>
              View All customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'create_client' %}">
-              <span data-feather="file-text" class="align-text-bottom"></span>
-            Add New Client
             </a>
           </li>
          
@@ -170,10 +164,7 @@
               <span data-feather="file" class=" text-black align-text-bottom"></span>
             View Profile
             </a>  
-            <a class="nav-link " href="">
-              <span data-feather="file" class=" text-black align-text-bottom"></span>
-            Change Password
-            </a>  
+             
             <a class="nav-link " href="{% url 'logout' %}">
               <span data-feather="file" class=" text-black align-text-bottom"></span>
               Log out

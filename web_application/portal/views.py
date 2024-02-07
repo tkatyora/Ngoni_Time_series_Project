@@ -9,7 +9,7 @@ from .forms import Feedback_ComplainsForm
 from django.contrib import messages
 # Create your views here.
 users = NetworkProfile.objects.all().filter()
-fedcomp = Feedback_Complains.objects.all()
+fedcomp = Feedback_Complains.objects.all().order_by('-updated')
 @login_required(login_url='sign_in')
 def dashboard(request):
     content ={}
@@ -26,14 +26,15 @@ def dashboard(request):
 def NetworkPerfomance(request):
     newdata_set = pd.read_csv('PredictionModel/NetworkFalure.csv')
     ip = request.GET.get('ip',None)
-    
-    date = request.GET.get('date',None)
+    startdate = request.GET.get('date',None)
+    enddate = request.GET.get('enddate',None)
     #Plotting for specific customeer
-    df_customer = newdata_set.loc[newdata_set['Destination.IP'] == ip]
+    df_customer = newdata_set.loc[newdata_set['Destination.IP'] == ip ] 
+   # df_display = df_customer.loc[df_customer['Date'] == startdate  & df_customer['Date'] == enddate]
     df_Ratio = df_customer['Down.Up.Ratio']
     df_time = df_customer['Date']
     plt.plot(df_Ratio,df_time)
-    plt.title('DownUp Ratio for the whole network')
+    plt.title('DownUp Ratio ')
     plt.xlabel('Date')
     plt.ylabel('DownUp Ratio')
     plt.savefig('static/Images/Prediction/updowns.png')
@@ -43,8 +44,8 @@ def NetworkPerfomance(request):
     content ={
         'stats': users,
         'ip':ip,
-        'date':df_customer,
-        'img': data
+        
+    
     }  
     return render(request , 'Portal/Perfomance.html',content)
 
@@ -70,7 +71,7 @@ def NetworkPrediction(request):
 
 
 
-#------------------       Code Block Responsible for CRUD OPERATIONS Of Complains and Feedbacks--------------------------------------- 
+#---------------------- CRUD OPERATIONS Of Complains and Feedbacks--------------------------------------- 
 #3.1 CREATING FEDCOMP
 @login_required(login_url='sign_in')
 def AddFedComp(request):
@@ -78,11 +79,16 @@ def AddFedComp(request):
         form = Feedback_ComplainsForm(request.POST)
         if form.is_valid():
             form.save(commit=False)
+            types = form.cleaned_data['type']
             fedcomp = form.save(commit=False)
             fedcomp.created_by = request.user
             fedcomp.save()
+            print('this is a ',types)
             form.save()
-            mesage= f'Fedback added succesfully'
+            if types == 'Complain':
+                mesage= f'Complain added succesfully'
+            else:
+                mesage= f'Fedback added succesfully'
             messages.success(request,mesage)
             return redirect('addFed')   
         else:
@@ -109,13 +115,16 @@ def ViewFedComp(request):
 #3.3 REPLYCOMP
 @login_required(login_url='sign_in') 
 def replyComp(request, pk):
-    reply = Feedback_Complains.objects.get(id=pk)  
+    reply = Feedback_Complains.objects.get(id=pk) 
+    print('creatdby',reply.created_by) 
     if request.method == 'POST':
         form = Feedback_ComplainsForm(request.POST, instance=reply)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Reply updated succesfully')
-            return redirect('dashboard')
+            fedcomp = form.save(commit=False)
+            fedcomp.created_by = reply.created_by
+            fedcomp.save()
+            messages.success(request, 'Reply created succesfully')
+            
             
         else:
             messages.warning(request, 'Sorry Reply Failled')
@@ -141,3 +150,12 @@ def Recomandation(request):
         'recomand': users
     }  
     return render(request , 'Portal/recomandation.html',content)
+
+#---------------------------------------------------CLIENTS MANAGEMENT---------------------------------------------
+@login_required(login_url='sign_in')
+def View_Clients(request):
+    content ={}
+    content ={
+        'recomand': users
+    }  
+    return render(request , 'Portal/view_client.html',content)

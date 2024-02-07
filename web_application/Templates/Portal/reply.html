@@ -18,23 +18,8 @@
 <main class="col-md-9 col-lg-10 align-content-center px-md-4"
      style="width: 75%">
      <main class="col-md-9  col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            
-            <input type="search"  placeholder="search E36" class="btn btn-sm btn-outline-secondary"></input>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Search</button>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar" class="align-text-bottom"></span>
-            Filter
-          </button>
-        </div>
-      </div>
-  </main>
-  <form id="form-id" method="POST" enctype="multipart/form-data" class="shadow-lg mx-5 float-start mt-5"
-  style='width: 55%'>
+       <form id="form-id" method="POST" enctype="multipart/form-data" class="shadow-lg mx-5 float-start mt-5"
+  style='width: 75%'>
 {% csrf_token %}
 <br />
 <div class="message mt-3 text-center">
@@ -76,6 +61,7 @@
           From  ~ {{reply.created_by}} <br>
           @{{reply.created}}</strong> 
           </p>
+        
           <p class="lead ">
             <strong>{{form.type|as_crispy_field}}</strong> 
             </p>
@@ -86,12 +72,17 @@
       </div>
       </br>
       <div class="text-center mb-5">
-      <button type="submit" class="btn btn-info ms-5 w-50 button more">
+      <button type="submit" class="btn btn-info ms-5  button more">
       Submit
       </button>
+      <button type="back" class="btn btn-info ms-5  button more">
+        <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">
+          Cancel  </a>
+        </button>
       </div>
       </br>
-      </form>
+       </form>
+    </main>
  </main>
   
   

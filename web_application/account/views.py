@@ -11,7 +11,7 @@ from .form import *
 # Create your views here.
 AllProfile = NetworkProfile.objects.all()
 alluser = User.objects.all() 
-print(AllProfile)
+
 @unauthenticated_user
 def signin(request):
     if request.method == 'POST':

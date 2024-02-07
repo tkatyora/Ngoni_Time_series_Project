@@ -1,0 +1,93 @@
+{% extends 'other.html' %}
+ {%block content%} 
+ {%load static%}
+ {% load crispy_forms_tags %}
+<head>
+  <meta name="Key Words" content="NMS Web Application" />
+  <meta
+    name="description"
+    content=""
+  />
+{% block title%}
+    <title>Telone |Recomandations</title>
+{%endblock title%}
+</head>
+
+<body class="">
+  <main class="col-md-9 ms-sm-auto col-lg-10 align-content-center px-md-4"
+  style="width: 100%">
+ 
+  <div class="container">
+   <h3 class="p-4 text-start">All Customers</h3>
+   <div class="text-end">
+    <button type="submit" class="btn btn-info ms-5 text-end  button ">
+    
+      <a class="nav-link   p-0 text-muted" href="http://127.0.0.1:8000/admin/auth/user/">
+        Add New Customer </a>
+    </button>
+   </div>
+  
+  <br>
+   <div class="row g-5">
+     <table class="table">
+       <thead class="thead-light">
+         <tr>
+          
+           <th scope="col">Compnay Name</th>
+           <th scope="col">Email</th>
+           <th scope="col">Username</th>
+           <th scope="col">City</th>
+           <th scope="col">Capacity</th>
+           <th scope="col">IP Address</th>
+           <th scope="col">Network Type</th>
+           <th scope="col">Service Type</th>
+           <th scope="col">Account Number</th>
+           <th scope="col">Action</th>
+         </tr>
+       </thead>
+ 
+       <tbody>
+        {% for data  in recomand %}
+         
+         <tr>
+          {%if data.Service == 'customer' %}
+           <td>{{data.user.first_name}}</td>
+           <td>{{data.user.email}}</td>
+           <td>{{data.user.username}}</td>
+           <td>{{data.city}}</td>
+           <td>{{data.capacity}}</td>
+           <td>{{data.IPAddress}}</td>
+           <td>{{data.Network}}</td>
+           <td>{{data.Service}}</td>
+           <td>{{data.accountNumber}}</td>
+           <td>
+             <a href="http://127.0.0.1:8000/admin/account/networkprofile/" class="text-decoration-none">Delete User</a>
+         
+           </td>
+           {%endif%}
+         </tr>
+         
+ 
+         {%endfor %}
+ 
+ 
+         
+       </tbody>
+     </table>
+   </div>
+ </div>
+ <div class="text-center mb-5">
+   <button type="submit" class="btn btn-info ms-5 w-25 button ">
+     Create
+   </button>
+   <button type="submit" class="btn btn-info ms-5 w-25 button ">
+     <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">
+       Back  </a>
+   </button>
+ </div>
+
+</main>
+
+
+</body>
+{%endblock content%}

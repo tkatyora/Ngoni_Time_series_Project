@@ -26,44 +26,44 @@
                                     {%if data.created_by.username == user.username or user.is_staff %} 
       <div class="col-4">
         <div class="p-4 border shadow bg-light">
+
+
                                              {%if data.type == 'Complain'%}
           <p class=" text-start"> <strong class="text-warning"> {{data.type}}</strong> 
             : {{data.created_by.first_name.title}} 
             {%endif%}
-            {%if data.type == 'Complain'%}
-            <p >
+
           </p>
-                                            {%else%}
+          {%if data.type == 'Feedback'%}                                
           <p class=" text-end"> <strong class="text-success"> {{data.type}}</strong>
             : {{data.created_by.first_name.title}} 
             {%endif%}
-            {%if data.type == 'Complain'%} </p>
-                                            {%endif%}
-          <p >{{data.body}} <br>
-            <span class="text-secondary">@{{data.created}} </span></p>
-            {%if data.type == 'Complain'%} 
-          <div class="fw-bold text-start">
-            <h5 class=" text-warning ">Reply</h5>
-                                      {%if data.reply == 'None' or   data.created == data.updated %}
-            <p class="text-danger fs-6" >
-      
-                                              {%if data.created_by.username == user.username %} 
-                                              
-                There is No reply yet
-                                              {%else%}
-             
-              You have not Replied to this Complain
             </p>
-                                              {%endif%}
-                                     {%else%}
-            <p > hi{{data.reply}} <br>
+            <p >{{data.body}} <br>
+              <span class="text-secondary">@{{data.created}} </span></p>
+
+            {%if data.type == 'Complain'%} 
+          <div class="text-end">
+            <h5 class="text-end text-warning ">Reply</h5>
+                                      {%if data.reply == 'None'  %}
+            <p class="text-danger fs-6" >    
+              {%if user.is_staff%}                        
+                You have not replied this complain
+                {%else%}
+                There is No reply yet
+                {%endif%}
+                
+            </p>                                
+                                      {%else%}
+                                      
+            <p class="lead text-end"> {{data.reply}} <br>
                 @{{data.updated}}</p>
                                     {%endif%}
                                     
                                     {%if user.is_staff%}
            <button
                class="text-center btn btn-sm btn-outline-info">
-              <a class="nav-link p-0 text-muted" href="{% url 'reply' data.id %}">Reply</a>
+              <a class="nav-link p-0 text-muted" href="{% url 'reply' data.id %} " target="_blank" rel="noopener noreferrer">Reply</a>
             </button></p>
             {%endif%}
           </div>
@@ -82,7 +82,10 @@
                                         {%endfor%}
           
              <div>
-              <button class="text-center mb-5 btn btn-sm btn-outline-info"><a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">Back To Main dashboard</a></button>
+              <button class="text-center mb-5 btn btn-sm btn-outline-info">
+                <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">
+                  Back To Main dashboard</a>
+              </button>
               <br/> 
              </div> 
             </div>

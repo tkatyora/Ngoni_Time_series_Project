@@ -16,7 +16,7 @@ B = random.choice(Alphabet)
 
 C = random.choice(Alphabet)
 accountNum = f'{A}{B}{C}{num}{num2}'
-print(accountNum)
+
 
 @receiver(post_save, sender=User)
 def create_profile(sender,instance,created,*args,**kwargs):
