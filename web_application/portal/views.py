@@ -7,6 +7,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from .forms import Feedback_ComplainsForm
 from django.contrib import messages
+from django.contrib.sites.shortcuts import get_current_site
+
+
+
 # Create your views here.
 users = NetworkProfile.objects.all().filter()
 fedcomp = Feedback_Complains.objects.all().order_by('-updated')
@@ -154,8 +158,10 @@ def Recomandation(request):
 #---------------------------------------------------CLIENTS MANAGEMENT---------------------------------------------
 @login_required(login_url='sign_in')
 def View_Clients(request):
+    domain = get_current_site(request).domain
     content ={}
     content ={
-        'recomand': users
+        'recomand': users,
+        'domain':domain
     }  
     return render(request , 'Portal/view_client.html',content)
