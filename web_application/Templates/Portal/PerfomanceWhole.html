@@ -16,7 +16,7 @@
 <body class="">
   <main class="mt-5 mx-5 fs-5" >
     <div class=" text-center">
-      <h5  class="">Customer's  Network Statistics  </h5>   
+      <h5  class="">Whole Network Statistics  </h5>   
       <hr>
       <br>
     </div>  
@@ -31,16 +31,7 @@
                                    
       <div class="col-4">
         <div class="p-4 border shadow bg-light">  
-          <div class="form mb-3 mx-sm-3">
-            <label for ='username' class="form-label user">Enter Customer IP</label>
-            <input
-             type="text"
-             name="ip"
-             class="form-control input"
-             required
-             autocomplete="True" 
-           />
-         </div>
+        
          <div class="mb-4 mx-sm-3 form">
            <label for="password" class="form-label"> Select Start Date</label>
            <input
@@ -90,11 +81,11 @@
   
   </form> <br> <br>
   <p class="text-center">Graph for Up Down Ratio 
-     Flag for 1P Address  : {{ip}}</p>
+   </p>
   <div class="ms-5 d-flex">
     
     
-      <img src="{% static '../static/Images/Prediction/updowns.png'%} " class=" d-block "
+      <img src="{% static '../static/Images/Prediction/Wholeupdowns.png'%} " class=" d-block "
       style="height: 500px;"  width="900px"> 
       <div>
         <br> <br>
@@ -108,10 +99,10 @@
   </div>
   <br> <br>
   <p class="text-center" >Graph for Acknowledgement
-     Flag for 1P Address  : {{ip}}</p>
+    </p>
   <div class="d-flex">
   
-    <img src="{% static '../static/Images/Prediction/ack.png'%} " class=" d-block "
+    <img src="{% static '../static/Images/Prediction/Wholeack.png'%} " class=" d-block "
       style="height: 500px;"  width="900px"> 
     <div>
       <br> <br>

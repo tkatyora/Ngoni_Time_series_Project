@@ -9,7 +9,7 @@
     content=""
   />
 {% block title%}
-    <title>Telone |Recomandations</title>
+    <title>GNP |View Clients</title>
 {%endblock title%}
 </head>
 
@@ -19,6 +19,11 @@
  
   <div class="container">
    <h3 class="p-4 text-start">All Customers</h3>
+   {% for data  in recomand %}
+   {%if data.Service == 'Admin' %}
+         <p>ISP IP Address : {{data.IPAddress}}</p>
+      {%endif%}
+        {%endfor%}
    <div class="text-end">
     <button type="submit" class="btn btn-info ms-5 w-25 button ">
       <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">

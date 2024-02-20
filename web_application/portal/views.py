@@ -34,7 +34,7 @@ def NetworkPerfomance(request):
     enddate = request.GET.get('enddate',None)
     #Plotting for specific customeer
     df_customer = newdata_set.loc[newdata_set['Destination.IP'] == ip ] 
-   # df_display = df_customer.loc[df_customer['Date'] == startdate  & df_customer['Date'] == enddate]
+    #df_display = df_customer.loc[df_customer['Date'] == startdate  & df_customer['Date'] == enddate]
     df_Ratio = df_customer['Down.Up.Ratio']
     df_time = df_customer['Date']
     plt.plot(df_Ratio,df_time)
@@ -42,6 +42,15 @@ def NetworkPerfomance(request):
     plt.xlabel('Date')
     plt.ylabel('DownUp Ratio')
     plt.savefig('static/Images/Prediction/updowns.png')
+    data = plt.show()
+
+    df_Ratio = df_customer['ACK.Flag.Count']
+    df_time = df_customer['Date']
+    plt.plot(df_Ratio,df_time)
+    plt.title('Acknowledgement')
+    plt.xlabel('Date')
+    plt.ylabel('DownUp Ratio')
+    plt.savefig('static/Images/Prediction/ack.png')
     data = plt.show()
    
     content ={}
@@ -52,6 +61,38 @@ def NetworkPerfomance(request):
     
     }  
     return render(request , 'Portal/Perfomance.html',content)
+
+@login_required(login_url='sign_in')
+def NetworkPerfomanceWhole(request):
+    df_predict = pd.read_csv('PredictionModel/NetworkFalure.csv')
+    
+    #Plotting for specific customeer
+    df_Ratio = df_predict['Down.Up.Ratio']
+    df_time = df_predict['Date']
+    plt.plot(df_Ratio)
+    plt.title('DownUp Ratio for the whole network')
+    plt.xlabel('Date')
+    plt.ylabel('DownUp Ratio')
+    plt.savefig('static/Images/Prediction/Wholeupdowns.png')
+  
+
+    df_ack = df_predict['ACK.Flag.Count']
+    df_time = df_predict['Date']
+    plt.plot(df_ack)
+    plt.title('Ack Flag for the whole network')
+    plt.xlabel('Date')
+    plt.ylabel('Acknowledgement Flag')
+    plt.savefig('static/Images/Prediction/Wholeack.png')
+    
+   
+    content ={}
+    content ={
+        'stats': users,
+     
+        
+    
+    }  
+    return render(request , 'Portal/PerfomanceWhole.html',content)
 
 #--------------------------------CRUD FOR FAILURE PREDICTION-------------------------------------------
 @login_required(login_url='sign_in')

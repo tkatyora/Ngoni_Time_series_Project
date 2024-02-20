@@ -67,11 +67,15 @@
             <ul class="nav flex-column">
               <li class="nav-item ">
                 {%if user.is_superuser or users.Service == 'Admin'%}
-                <a class="nav-link " href="{% url 'Perfomance' %}"   >
-                  Network Statistics
+                <a class="nav-link " href="{% url 'whole_Perfomance' %}"   >
+                Whole Network Statistics
                   </a>  
                   
                   {%endif%}
+                  <a class="nav-link " href="{% url 'Perfomance' %}"   >
+                    Network Statistics
+                    </a>  
+                    
               <a class="nav-link " href="{% url 'Prediction' %}"  target="_blank" rel="noopener noreferrer" >
                 Network Failure Prediction
                 </a>

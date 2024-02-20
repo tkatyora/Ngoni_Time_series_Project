@@ -5,6 +5,8 @@ urlpatterns = [
     path('',views.dashboard , name ='dashboard'),  
     path('networkPrediction',views.NetworkPrediction , name ='Prediction'),  
     path('networkPerfomance',views.NetworkPerfomance , name ='Perfomance'), 
+    path('whole-network-Perfomance',views.NetworkPerfomanceWhole, name ='whole_Perfomance'), 
+   
 
     #URLS FOR FEED BACK 
     path('AddCompain_Feedback',views.AddFedComp , name ='addFed'),
