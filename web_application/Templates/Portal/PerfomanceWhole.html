@@ -33,23 +33,34 @@
         <div class="p-4 border shadow bg-light">  
         
          <div class="mb-4 mx-sm-3 form">
-           <label for="password" class="form-label"> Select Start Date</label>
+           <label for="password" class="form-label"> Start Date</label>
            <input
-             type="date"
-             name="date"
+             type="text"
+             name="date_whole"
              class="form-control input"
              
            /> 
           
          </div> 
          <div class="mb-3 mx-sm-3 form">
-          <label for="password" class="form-label"> Select End Date</label>
+          <label for="password" class="form-label"> Select start Time</label>
           <input
-            type="date"
-            name="enddate"
+            type="text"
+            name="starttime_whole"
             class="form-control input"
+           placeholder="12:15:17 : Enter in this format"
             
           /> 
+         
+         </div> 
+         <div class="mb-3 mx-sm-3 form">
+          <label for="password" class="form-label"> Select End Time</label>
+          <input
+            type="text"
+            name="endtime_whole"
+            class="form-control input"
+            placeholder="12:15:17 : Enter in this format"
+          />
          
          </div> 
          <br>  
@@ -80,30 +91,31 @@
     </div>
   
   </form> <br> <br>
-  <p class="text-center">Graph for Up Down Ratio 
+  <p class="text-center">Graph for The Whole Network  Recorded at <strong>{{date}}</strong>  from  <strong>{{starttime}}</strong>   to <strong>{{endtime}}</strong> 
    </p>
+   
+   <br>
   <div class="ms-5 d-flex">
     
     
-      <img src="{% static '../static/Images/Prediction/Wholeupdowns.png'%} " class=" d-block "
-      style="height: 500px;"  width="900px"> 
-      <div>
-        <br> <br>
-        <strong>Note: </strong> Information About Down Up Ratio
-        <p>If DownUp ratio is high The network is perfmoing slows </p>
-        <p>If The DownUp ratio is low The Network is perfoming so well</p>
-      </div>
+      <img src="{% static '../static/Images/Prediction/Wholeupdowns_ack.png'%} " class=" d-block "
+      style="height: 1100px;"  width="1000px"> 
+      
       
 
      
   </div>
   <br> <br>
-  <p class="text-center" >Graph for Acknowledgement
+  <p class="text-center" >
     </p>
   <div class="d-flex">
   
-    <img src="{% static '../static/Images/Prediction/Wholeack.png'%} " class=" d-block "
-      style="height: 500px;"  width="900px"> 
+    <div>
+      <br> <br>
+      <strong>Note: </strong> Information About Down Up Ratio
+      <p>If DownUp ratio is high The network is perfmoing slows </p>
+      <p>If The DownUp ratio is low The Network is perfoming so well</p>
+    </div>
     <div>
       <br> <br>
       <strong>Note: </strong> Acknowledgement Flag

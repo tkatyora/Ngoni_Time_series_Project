@@ -20,19 +20,19 @@
       <hr>
       <br>
     </div>  
-    <form id='form-id'  method = 'GET' >
+    <form id='form-id'  method = 'GET'  >
           {% csrf_token %}                                 
     <div class="d-flex justify-content-center  fs-5 g-5"> 
      
-                                    {% for data  in stats %}
                                     
-                                    {%if data.Service == 'Admin' %}
-                                    {%if data.user.username == user.username or user.is_staff %} 
                                    
       <div class="col-4">
         <div class="p-4 border shadow bg-light">  
+          <p class="text-center">For better redability select small intervals of time</p>
           <div class="form mb-3 mx-sm-3">
-            <label for ='username' class="form-label user">Enter Customer IP</label>
+            <label for ='username' class="form-label user">Enter IP Address </label>
+
+            
             <input
              type="text"
              name="ip"
@@ -42,22 +42,34 @@
            />
          </div>
          <div class="mb-4 mx-sm-3 form">
-           <label for="password" class="form-label"> Select Start Date</label>
+           <label for="password" class="form-label"> Select Date</label>
            <input
-             type="date"
+             type="text"
              name="date"
              class="form-control input"
+             placeholder="2017-04-26 : Enter in this format"
              
            /> 
           
          </div> 
          <div class="mb-3 mx-sm-3 form">
-          <label for="password" class="form-label"> Select End Date</label>
+          <label for="password" class="form-label"> Select start Time</label>
           <input
-            type="date"
-            name="enddate"
+            type="text"
+            name="starttime"
             class="form-control input"
+           placeholder="12:15:17 : Enter in this format"
             
+          /> 
+         
+         </div> 
+         <div class="mb-3 mx-sm-3 form">
+          <label for="password" class="form-label"> Select End Time</label>
+          <input
+            type="text"
+            name="endtime"
+            class="form-control input"
+            placeholder="12:15:17 : Enter in this format"
           /> 
          
          </div> 
@@ -78,9 +90,6 @@
      
       
            
-                                      {%endif%}
-                                       {%endif%}
-                                        {%endfor%}
                                          
      <div>
               
@@ -89,30 +98,28 @@
     </div>
   
   </form> <br> <br>
-  <p class="text-center">Graph for Up Down Ratio 
-     Flag for 1P Address  : {{ip}}</p>
-  <div class="ms-5 d-flex">
+  <p class="text-center">The following Graphs are for   <br> <br>  IP Address  <strong>{{ip}}</strong> . Recorded at <strong>{{date}}</strong>  from  <strong>{{starttime}}</strong>   to <strong>{{endtime}}</strong> </p>
+   <br>
+  <div class="ms-5 ">
     
     
-      <img src="{% static '../static/Images/Prediction/updowns.png'%} " class=" d-block "
-      style="height: 500px;"  width="900px"> 
-      <div>
-        <br> <br>
-        <strong>Note: </strong> Information About Down Up Ratio
-        <p>If DownUp ratio is high The network is perfmoing slows </p>
-        <p>If The DownUp ratio is low The Network is perfoming so well</p>
-      </div>
+      <img src="{% static '../static/Images/Prediction/updowns_ack.png'%} " class=" d-block "
+      style="height: 1000px;"  width="900px"> 
+     
       
 
      
   </div>
   <br> <br>
-  <p class="text-center" >Graph for Acknowledgement
-     Flag for 1P Address  : {{ip}}</p>
+  <p class="text-center" >Notes</p>
   <div class="d-flex">
   
-    <img src="{% static '../static/Images/Prediction/ack.png'%} " class=" d-block "
-      style="height: 500px;"  width="900px"> 
+    <div>
+      <br> <br>
+      <strong>Note: </strong> Information About Down Up Ratio
+      <p>If DownUp ratio is high The network is perfmoing slows </p>
+      <p>If The DownUp ratio is low The Network is perfoming so well</p>
+    </div>
     <div>
       <br> <br>
       <strong>Note: </strong> Acknowledgement Flag
@@ -121,6 +128,13 @@
       <p>If  Acknowledgement Flag is 0 The Network is perfoming so slow</p>
     </div>
   </div>
+  <div class="text-center">
+    <button class="w-25  mb-5 btn btn-sm bg-info">
+      <a class="nav-link p-0 text-muted" href="{% url 'dashboard'%}">
+      Back  </a>
+    </button> 
+   
+   </div>                             
 
   </main>
 
